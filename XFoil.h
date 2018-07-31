@@ -95,7 +95,7 @@ public:
 	bool ExecQDES();
 	bool initialize();
 	bool initXFoilGeometry(int fn, double *fx, double *fy, double *fnx, double *fny);
-	bool _initXFoilGeometry(Eigen::Matrix<double, Eigen::Dynamic, 2> coordinates);
+    bool _initXFoilGeometry(const Eigen::Matrix<double, Eigen::Dynamic, 2>& coordinates);
 	bool initXFoilAnalysis(double Re, double alpha, double Mach, double NCrit, double XtrTop, double XtrBot,
 								  int reType, int maType, bool bViscous);
 

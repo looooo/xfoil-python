@@ -3997,7 +3997,7 @@ bool XFoil::iblsys()
 }
 
 
-bool XFoil::_initXFoilGeometry(Eigen::Matrix<double, Eigen::Dynamic, 2> coordinates)
+bool XFoil::_initXFoilGeometry(const Eigen::Matrix<double, Eigen::Dynamic, 2>& coordinates)
 {
 	nb = coordinates.rows();
 	for(int i=0; i<nb; i++)

@@ -84,6 +84,18 @@ bool run(XFoil & xfoil, int max_iterations, bool initBL)
     return false;
 }
 
+Eigen::Matrix<double, Eigen::Dynamic, 2> get_coordinates(const XFoil& foil)
+{
+    Eigen::Matrix<double, Eigen::Dynamic, 2> coordinates;
+    coordinates.resize(foil.nb, 2);
+    for (int i = 0; i < foil.nb; i++)
+    {
+        coordinates(i, 0) = foil.xb[i + 1];
+        coordinates(i, 1) = foil.yb[i + 1];
+    }
+    return coordinates;
+}
+
 
 PYBIND11_MODULE(xfoil, m) {
     m.doc() = "python bindings to xfoil";
@@ -107,5 +119,7 @@ PYBIND11_MODULE(xfoil, m) {
         .def_readonly("lvconv", &XFoil::lvconv)
         .def_property("qinf", &XFoil::QInf, &XFoil::setQInf)
         .def("specal", &XFoil::specal)
-        .def("speccl", &XFoil::speccl);
+        .def("speccl", &XFoil::speccl)
+        .def_readonly("numpoints", &XFoil::nb)
+        .def("get_coordiantes", &get_coordinates);
 };
