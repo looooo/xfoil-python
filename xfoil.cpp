@@ -28,6 +28,8 @@ std::map<std::string, double> get_aero_components(const XFoil & foil)
 
 bool run(XFoil & foil, int max_iterations, bool initBL)
 {
+    foil.lwake = false;
+    foil.lvconv = false;
     if(!foil.viscal())
     {
         foil.lvconv = false;
@@ -154,5 +156,7 @@ PYBIND11_MODULE(xfoil, m) {
         .def_readonly("numpoints", &XFoil::n)
         .def("get_coordiantes", &get_coordinates)
         .def("get_normals", &get_normals)
-        .def("get_panel_data", &get_panel_data);
+        .def("get_panel_data", &get_panel_data)
+        .def_readwrite("lalfa", &XFoil::lalfa);
+
 };
