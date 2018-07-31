@@ -2545,7 +2545,7 @@ bool XFoil::cpcalc(int n, double q[], double qinf, double minf, double cp[])
 
 void XFoil::writeString(QString str, bool bFullReport)
 {
-	if(!bFullReport && !s_bFullReport) return;
+	// if(!bFullReport && !s_bFullReport) return;
 	std::cout << str.toStdString();
 }
 
@@ -9688,6 +9688,7 @@ bool XFoil::viscal()
 		
 		gamqv();
 		clcalc(xcmref,ycmref);
+		
 		cdcalc();
 	}
 	

@@ -352,7 +352,8 @@ public:
 
 	double m_ctrl; /** information storage for xflr5 gui */
 
-private:
+
+public:
 
 	double wc[ICX+1],sc[ICX+1];
 	double scold[ICX+1],xcold[ICX+1],ycold[ICX+1];
